@@ -22,6 +22,6 @@ jobs:
         working-directory: ./server
         run: pwd # Optional: Print current directory for verification
 
-      - run: npm ci
-      - run: npm run lint
-      - run: npm run test
+      - run: pnpm ci
+      - run: pnpm run lint
+      - run: pnpm run test
