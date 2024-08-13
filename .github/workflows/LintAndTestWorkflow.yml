@@ -21,6 +21,12 @@ jobs:
       # Install pnpm
       - name: Install pnpm
         run: npm install -g pnpm
+        env:
+          PATH: ~/.npm-global/bin:$PATH # Add npm global bin to PATH
+
+      # Confirm pnpm installation
+      - name: Verify pnpm installation
+        run: pnpm --version
 
       # Navigate to the server directory
       - name: Navigate to server directory
