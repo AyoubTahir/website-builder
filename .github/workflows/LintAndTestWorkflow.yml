@@ -16,17 +16,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "pnpm" # Caches pnpm dependencies for faster builds
+          #cache: "pnpm" # Caches pnpm dependencies for faster builds
 
       # Install pnpm
       - name: Install pnpm
         run: npm install -g pnpm
-        env:
-          PATH: ~/.npm-global/bin:$PATH # Add npm global bin to PATH
-
-      # Confirm pnpm installation
-      - name: Verify pnpm installation
-        run: pnpm --version
 
       # Navigate to the server directory
       - name: Navigate to server directory
