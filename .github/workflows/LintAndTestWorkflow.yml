@@ -16,12 +16,22 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+          #cache: "pnpm" # Caches pnpm dependencies for faster builds
 
-      # Navigate to the server directory
-      - name: Navigate to server directory
+      # Install pnpm
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      # Navigate to the server directory and install dependencies
+      - name: Install dependencies
         working-directory: ./server
-        run: pwd # Optional: Print current directory for verification
+        run: pnpm install
 
-      - run: npm ci
-      - run: npm run lint
-      - run: npm run test
+      # Run linting and tests
+      - name: Lint code
+        working-directory: ./server
+        run: pnpm run lint
+
+      - name: Run tests
+        working-directory: ./server
+        run: pnpm run test
